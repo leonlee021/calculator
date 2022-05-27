@@ -23,6 +23,9 @@ body{
     border: 5px solid rgb(0, 0, 0);
     margin: 30px;
     border-radius: 20%;
+    text-align:right;
+    font-family: Monaco;
+    font-size: 1.2cm;
 }
 
 #cleardelete{
@@ -39,6 +42,7 @@ body{
     border-radius: 50%;
     background-color: rgb(252, 235, 194);
     font-family: Monaco;
+    cursor: pointer;
 }
 
 #keys{
@@ -61,6 +65,7 @@ body{
     text-align: center;
     background-color: rgb(252, 235, 194);
     font-family: Monaco;
+    cursor: pointer;
 }
 
 .operators{
@@ -70,4 +75,15 @@ body{
     text-align: center;
     background-color: rgb(252, 235, 194);
     font-family: Monaco;
+    cursor: pointer;
+}
+
+#equalbutton{
+    border: 5px solid rgb(0, 0, 0);
+    padding: 5px 40px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: rgb(252, 235, 194);
+    font-family: Monaco;
+    cursor: pointer;
 }
