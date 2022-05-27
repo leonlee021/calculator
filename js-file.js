@@ -28,6 +28,7 @@ const deletebutton = document.getElementById("delete");
 const clearbutton = document.getElementById("clear");
 const operatorbutton = document.querySelectorAll(".operators");
 const equalbutton = document.getElementById("equalbutton");
+window.addEventListener('keydown',keyboardInput);
 
 let firstNumber = null;
 let currentOperation = null;
@@ -113,3 +114,25 @@ function equalButtonFunc(){
         return;
     }
 }
+
+function keyboardInput(e){
+    if (e.key >= 0 && e.key <= 9 || e.key == '.'){
+        displayNumber(e.key);
+    }
+    if (e.key === '='){
+        equalButtonFunc();
+    }
+    if (e.key === 'Backspace' || e.key === 'd'){
+        deleteNumber();
+    }
+    if (e.key === 'Escape' || e.key === 'c'){
+        clearDisplay();
+    }
+    if (e.keyCode === 13){
+        equalButtonFunc();
+    }
+    if (e.key === '*' || e.key === '/' || e.key === '-' || e.key == '+'){
+        proceedOperation(e.key);
+    }
+}
+

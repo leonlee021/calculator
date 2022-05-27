@@ -10,7 +10,7 @@ body{
     background-color: rgb(88, 232, 116);
     border: 5px solid rgb(0, 0, 0);
     margin: 0 auto;
-    margin-top: 90px;
+    margin-top: 50px;
     border-radius: 10% !important;
     overflow: hidden;
 } 
@@ -86,4 +86,9 @@ body{
     background-color: rgb(252, 235, 194);
     font-family: Monaco;
     cursor: pointer;
+}
+
+h1{
+    text-align: center;
+    font-family: Monaco;
 }
