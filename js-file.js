@@ -47,17 +47,21 @@ function proceedOperation(operation){
         displaynumber.textContent = operation;
         currentOperation = operation;
     }
-    else if (firstNumber !== null){
+    else if (firstNumber !== null && displaynumber.textContent !== '*' && displaynumber.textContent !== '/' && displaynumber.textContent != '-' && displaynumber.textContent != '+'){
         firstNumber = displaynumber.textContent;
         secondNumber = null;
         displaynumber.textContent = operation;
         currentOperation = operation; 
     }
+    else {
+        displaynumber.textContent = operation;
+        currentOperation = operation;
+    }
 }
 
 equalbutton.addEventListener('click',equalButtonFunc);
 
-// deletebutton.addEventListener('click',() => deleteNumber())
+deletebutton.addEventListener('click',() => deleteNumber());
 
 clearbutton.addEventListener('click',clearDisplay);
 
@@ -69,6 +73,15 @@ function displayNumber(number){
         displaynumber.textContent = '';
     }
     displaynumber.textContent += number;
+}
+
+function deleteNumber(number){
+    if (displaynumber.textContent !== null && (displaynumber.textContent).length > 1){
+        displaynumber.textContent = displaynumber.textContent.toString().slice(0, -1);
+    }
+    else {
+        displaynumber.textContent = 0;
+    }
 }
 
 function clearDisplay(){
@@ -100,7 +113,3 @@ function equalButtonFunc(){
         return;
     }
 }
-
-// function deleteNumber(number){
-//     displaynumber.textContent -= number;
-// }
