@@ -48,12 +48,33 @@ function proceedOperation(operation){
         displaynumber.textContent = operation;
         currentOperation = operation;
     }
-    else if (firstNumber !== null && displaynumber.textContent !== '*' && displaynumber.textContent !== '/' && displaynumber.textContent != '-' && displaynumber.textContent != '+'){
-        firstNumber = displaynumber.textContent;
+    else if (firstNumber !== null && secondNumber == null && displaynumber.textContent !== '*' && displaynumber.textContent !== '/' && displaynumber.textContent != '-' && displaynumber.textContent != '+'){
+        if (currentOperation == '+'){
+            firstNumber = operate(add, firstNumber, displaynumber.textContent);
+        }
+        else if (currentOperation == '-'){
+            firstNumber= operate(subtract, firstNumber, displaynumber.textContent);
+        }
+        else if (currentOperation == '*'){
+            firstNumber = operate(multiply, firstNumber, displaynumber.textContent);
+        }
+        else if (currentOperation == '/'){
+            firstNumber = operate(divide, firstNumber, displaynumber.textContent);
+        }
         secondNumber = null;
         displaynumber.textContent = operation;
-        currentOperation = operation; 
+        currentOperation = operation;
+        //firstNumber = displaynumber.textContent;
+        //secondNumber = null;
+
+        // secondNumber = displaynumber.textContent;
+        // displaynumber.textContent = operation;
+        // currentOperation = operation; 
     }
+    // else if (firstNumber !== null && currentOperation !== null && secondNumber !== null){
+        //secondNumber = displaynumber.textContent;
+    // }
+
     else {
         displaynumber.textContent = operation;
         currentOperation = operation;
@@ -94,8 +115,8 @@ function clearDisplay(){
 
 function equalButtonFunc(){
     if (firstNumber !== null && currentOperation !== null && secondNumber == null){
-        secondNumber = displaynumber.textContent;
-    }
+         secondNumber = displaynumber.textContent;
+     }
     if (firstNumber !== null && currentOperation !== null && secondNumber !== null){
         if (currentOperation == '+'){
             displaynumber.textContent = operate(add, firstNumber, secondNumber);
