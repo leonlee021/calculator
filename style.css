@@ -1,0 +1,73 @@
+body{
+    position: relative;
+}
+
+#calculator{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 600px;
+    background-color: rgb(88, 232, 116);
+    border: 5px solid rgb(0, 0, 0);
+    margin: 0 auto;
+    margin-top: 90px;
+    border-radius: 10% !important;
+    overflow: hidden;
+} 
+
+#display{
+    background-color: rgb(252, 235, 194); 
+    padding: 30px; 
+    max-height: 150px;
+    min-height: 80px;
+    border: 5px solid rgb(0, 0, 0);
+    margin: 30px;
+    border-radius: 20%;
+}
+
+#cleardelete{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(88, 232, 116);
+    font-size: 0.7cm;
+    gap: 40px;
+} 
+
+.cleardelete{
+    border: 5px solid rgb(0, 0, 0);
+    padding: 15px;
+    border-radius: 50%;
+    background-color: rgb(252, 235, 194);
+    font-family: Monaco;
+}
+
+#keys{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    font-size: 0.7cm;
+}
+
+.row{
+    display: flex;
+    justify-content: space-evenly; 
+}
+
+.numbers{
+    border: 5px solid rgb(0, 0, 0);
+    padding: 5px 40px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: rgb(252, 235, 194);
+    font-family: Monaco;
+}
+
+.operators{
+    border: 5px solid rgb(0, 0, 0);
+    padding: 5px 40px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: rgb(252, 235, 194);
+    font-family: Monaco;
+}
