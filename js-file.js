@@ -48,7 +48,7 @@ operatorbutton.forEach((button) =>
 );
 
 function proceedOperation(operation){
-    if (lastButtonPressed == 'b'){
+    if (lastButtonPressed == 'o'){
         return;
     }
     if (firstNumber == null){
@@ -108,7 +108,7 @@ function proceedOperation(operation){
         displaynumber.textContent = operation;
         currentOperation = operation;
     }
-    lastButtonPressed = 'b';
+    lastButtonPressed = 'o';
 }
 
 equalbutton.addEventListener('click',equalButtonFunc);
@@ -155,6 +155,9 @@ function clearDisplay(){
 
 function changeSign(){
     if (equalSignOne == true){
+        return;
+    }
+    if (lastButtonPressed == 'o'){
         return;
     }
     if (displaynumber.textContent !== null && displaynumber.textContent !== 0 && displaynumber.textContent !== '*' && displaynumber.textContent !== '/' && displaynumber.textContent != '-' && displaynumber.textContent != '+'){
