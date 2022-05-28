@@ -47,6 +47,10 @@ body{
 }
 
 .middlebar:hover{
+    background-color: rgb(255, 129, 84);
+}
+
+#negative:hover{
     background-color: rgb(230, 188, 92);
 }
 
