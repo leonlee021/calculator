@@ -1,21 +1,20 @@
-
 function add(num1, num2){
-    return parseFloat((parseFloat(num1) + parseFloat(num2)).toFixed(5));
+    return parseFloat((parseFloat(num1) + parseFloat(num2)).toFixed(3));
 }
 
 function subtract(num1, num2){
-    return parseFloat((num1 - num2).toFixed(5));
+    return parseFloat((num1 - num2).toFixed(3));
 }
 
 function multiply(num1, num2){
-    return parseFloat((num1 * num2).toFixed(5));
+    return parseFloat((num1 * num2).toFixed(3));
 }
 
 function divide(num1, num2){
     if (num2 == 0){
         return "Undefined";
     }
-    return parseFloat((num1 / num2).toFixed(5));
+    return parseFloat((num1 / num2).toFixed(3));
 }
 
 function operate(operator, num1, num2){
@@ -38,6 +37,7 @@ let sign = true;
 let equationOne = false;
 let equalSignOne = false;
 let tempSecondNumber;
+let lastButtonPressed;
 
 chosennumber.forEach((number)=>
     number.addEventListener('click',() => displayNumber(number.textContent))
@@ -48,6 +48,9 @@ operatorbutton.forEach((button) =>
 );
 
 function proceedOperation(operation){
+    if (lastButtonPressed == 'b'){
+        return;
+    }
     if (firstNumber == null){
         firstNumber = displaynumber.textContent;
         displaynumber.textContent = operation;
@@ -63,22 +66,22 @@ function proceedOperation(operation){
         equationOne = true;
         if (currentOperation == '+'){
             tempSecondNumber = displaynumber.textContent;
-            displaynumber.textContent = firstNumber.toString() + currentOperation.toString() + displaynumber.textContent.toString() + "=" + operate(add, firstNumber, displaynumber.textContent).toString();
+            displaynumber.textContent = displayFullEquation('add',tempSecondNumber);;
             firstNumber = operate(add, firstNumber, tempSecondNumber);
         }
         else if (currentOperation == '-'){ 
             tempSecondNumber = displaynumber.textContent;
-            displaynumber.textContent = firstNumber.toString() + currentOperation.toString() + displaynumber.textContent.toString() + "=" + operate(subtract, firstNumber, displaynumber.textContent).toString();
+            displaynumber.textContent = displayFullEquation('subtract',tempSecondNumber);
             firstNumber= operate(subtract, firstNumber, tempSecondNumber);
         }
         else if (currentOperation == '*'){
             tempSecondNumber = displaynumber.textContent;
-            displaynumber.textContent = firstNumber.toString() + currentOperation.toString() + displaynumber.textContent.toString() + "=" + operate(multiply, firstNumber, displaynumber.textContent).toString();
+            displaynumber.textContent = displayFullEquation('multiply',tempSecondNumber);
             firstNumber = operate(multiply, firstNumber, tempSecondNumber);
         }
         else if (currentOperation == '/'){
             tempSecondNumber = displaynumber.textContent;
-            displaynumber.textContent = firstNumber.toString() + currentOperation.toString() + displaynumber.textContent.toString() + "=" + operate(divide, firstNumber, displaynumber.textContent).toString();
+            displaynumber.textContent = displayFullEquation('divide',tempSecondNumber);
             firstNumber = operate(divide, firstNumber, tempSecondNumber);
         }
         displaynumber.textContent += operation;
@@ -89,6 +92,7 @@ function proceedOperation(operation){
         displaynumber.textContent = operation;
         currentOperation = operation;
     }
+    lastButtonPressed = 'b';
 }
 
 equalbutton.addEventListener('click',equalButtonFunc);
@@ -108,6 +112,7 @@ function displayNumber(number){
         displaynumber.textContent = '';
     }
     displaynumber.textContent += number;
+    lastButtonPressed = 'n';
 }
 
 function deleteNumber(number){
@@ -142,38 +147,54 @@ function changeSign(){
 }
 
 function equalButtonFunc(){
+    if (equalSignOne == true){
+        return;
+    }
     if (firstNumber !== null && currentOperation !== null && secondNumber == null){
          secondNumber = displaynumber.textContent;
      }
     if (firstNumber !== null && currentOperation !== null && secondNumber !== null){
         equalSignOne = true;
+        firstNumber = parseFloat(firstNumber);
+        secondNumber = parseFloat(secondNumber);
         if (currentOperation == '+'){
-            displaynumber.textContent = firstNumber.toString() + currentOperation.toString() + secondNumber.toString() + "=" + operate(add, firstNumber, secondNumber).toString();
+            displaynumber.textContent = displayFullEquation('add',secondNumber);
             firstNumber = operate(add, firstNumber, secondNumber);
             secondNumber = null;
-            //displaynumber.textContent = operate(add, firstNumber, secondNumber);
         }
         else if (currentOperation == '-'){
-            displaynumber.textContent = firstNumber.toString() + currentOperation.toString() + secondNumber.toString() + "=" + operate(subtract, firstNumber, secondNumber).toString();
+            displaynumber.textContent = displayFullEquation('subtract',secondNumber);
             firstNumber = operate(subtract, firstNumber, secondNumber);
             secondNumber = null;
-            //displaynumber.textContent = operate(subtract, firstNumber, secondNumber);
         }
         else if (currentOperation == '*'){
-            displaynumber.textContent = firstNumber.toString() + currentOperation.toString() + secondNumber.toString() + "=" + operate(multiply, firstNumber, secondNumber).toString();
+            displaynumber.textContent = displayFullEquation('multiply',secondNumber);
             firstNumber = operate(multiply, firstNumber, secondNumber);
             secondNumber = null;
-            //displaynumber.textContent = operate(multiply, firstNumber, secondNumber);
         }
         else if (currentOperation == '/'){
-            displaynumber.textContent = firstNumber.toString() + currentOperation.toString() + secondNumber.toString() + "=" + operate(divide, firstNumber, secondNumber).toString()
+            displaynumber.textContent = displayFullEquation('divide',secondNumber);
             firstNumber = operate(divide, firstNumber, secondNumber);
             secondNumber = null;
-            //displaynumber.textContent = operate(divide, firstNumber, secondNumber);
         }
     }
     else{
         return;
+    }
+}
+
+function displayFullEquation(operation, secondNumber){
+    if (operation == 'add'){
+        return parseFloat(firstNumber.toFixed(2).toString()) + currentOperation.toString() + parseFloat(secondNumber.toFixed(2).toString()) + "=" + operate(add, firstNumber, secondNumber).toString();
+    }
+    if (operation == 'subtract'){
+        return parseFloat(firstNumber.toFixed(2).toString()) + currentOperation.toString() + parseFloat(secondNumber.toFixed(2).toString()) + "=" + operate(subtract, firstNumber, secondNumber).toString();
+    }
+    if (operation == 'multiply'){
+        return parseFloat(firstNumber.toFixed(2).toString()) + currentOperation.toString() + parseFloat(secondNumber.toFixed(2).toString()) + "=" + operate(multiply, firstNumber, secondNumber).toString();
+    }
+    if (operation == 'divide'){
+        return parseFloat(firstNumber.toFixed(2).toString()) + currentOperation.toString() + parseFloat(secondNumber.toFixed(2).toString()) + "=" + operate(divide, firstNumber, secondNumber).toString();
     }
 }
 
