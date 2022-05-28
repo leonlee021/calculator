@@ -46,6 +46,10 @@ body{
     cursor: pointer;
 }
 
+.middlebar:hover{
+    background-color: rgb(230, 188, 92);
+}
+
 #keys{
     display: flex;
     flex-direction: column;
@@ -69,6 +73,10 @@ body{
     cursor: pointer;
 }
 
+.numbers:hover{
+    background-color: rgb(230, 188, 92);
+}
+
 .operators{
     border: 5px solid rgb(0, 0, 0);
     padding: 5px 40px;
@@ -77,6 +85,10 @@ body{
     background-color: rgb(252, 235, 194);
     font-family: Monaco;
     cursor: pointer;
+}
+
+.operators:hover{
+    background-color: rgb(230, 188, 92);
 }
 
 #equalbutton{
@@ -89,10 +101,21 @@ body{
     cursor: pointer;
 }
 
+#equalbutton:hover{
+    background-color: rgb(230, 188, 92);
+}
+
 h1{
     text-align: center;
     font-family: Monaco;
     margin-top: 30px;
-    font-size: 35pt;
+    font-size: 25pt;
     text-shadow: 0px 5px rgb(88, 232, 116);
+}
+
+h6{
+    text-align: center;
+    font-size: 10pt;
+    margin-top: 20px;
+    /* margin-bottom: 40px; */
 }
