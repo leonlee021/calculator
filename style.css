@@ -29,7 +29,7 @@ body{
     font-size: 1.2cm;
 }
 
-#cleardelete{
+#middlebar{
     display: flex;
     justify-content: space-evenly;
     background-color: rgb(88, 232, 116);
@@ -37,7 +37,7 @@ body{
     gap: 40px;
 } 
 
-.cleardelete{
+.middlebar{
     border: 5px solid rgb(0, 0, 0);
     padding: 15px;
     border-radius: 50%;

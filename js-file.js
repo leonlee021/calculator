@@ -26,6 +26,7 @@ const chosennumber = document.querySelectorAll(".numbers");
 const displaynumber = document.getElementById("display");
 const deletebutton = document.getElementById("delete");
 const clearbutton = document.getElementById("clear");
+const negativebutton = document.getElementById("negative");
 const operatorbutton = document.querySelectorAll(".operators");
 const equalbutton = document.getElementById("equalbutton");
 window.addEventListener('keydown',keyboardInput);
@@ -33,6 +34,7 @@ window.addEventListener('keydown',keyboardInput);
 let firstNumber = null;
 let currentOperation = null;
 let secondNumber = null;
+let sign = true;
 
 chosennumber.forEach((number)=>
     number.addEventListener('click',() => displayNumber(number.textContent))
@@ -64,16 +66,7 @@ function proceedOperation(operation){
         secondNumber = null;
         displaynumber.textContent = operation;
         currentOperation = operation;
-        //firstNumber = displaynumber.textContent;
-        //secondNumber = null;
-
-        // secondNumber = displaynumber.textContent;
-        // displaynumber.textContent = operation;
-        // currentOperation = operation; 
     }
-    // else if (firstNumber !== null && currentOperation !== null && secondNumber !== null){
-        //secondNumber = displaynumber.textContent;
-    // }
 
     else {
         displaynumber.textContent = operation;
@@ -82,10 +75,9 @@ function proceedOperation(operation){
 }
 
 equalbutton.addEventListener('click',equalButtonFunc);
-
 deletebutton.addEventListener('click',() => deleteNumber());
-
 clearbutton.addEventListener('click',clearDisplay);
+negativebutton.addEventListener('click',changeSign);
 
 function displayNumber(number){
     if (displaynumber.textContent === '0' || displaynumber.textContent === '*' || displaynumber.textContent === '/' || displaynumber.textContent === '+' || displaynumber.textContent === '-'){
@@ -111,6 +103,12 @@ function clearDisplay(){
     firstNumber = null;
     currentOperation = null;
     secondNumber = null;
+}
+
+function changeSign(){
+    if (displaynumber.textContent !== null && displaynumber.textContent !== 0 && displaynumber.textContent !== '*' && displaynumber.textContent !== '/' && displaynumber.textContent != '-' && displaynumber.textContent != '+'){
+        displaynumber.textContent = displaynumber.textContent * -1;
+    }
 }
 
 function equalButtonFunc(){
