@@ -38,6 +38,7 @@ let equationOne = false;
 let equalSignOne = false;
 let tempSecondNumber;
 let lastButtonPressed;
+let deletePressed = false;
 
 chosennumber.forEach((number)=>
     number.addEventListener('click',() => displayNumber(number.textContent))
@@ -48,11 +49,17 @@ operatorbutton.forEach((button) =>
 );
 
 function proceedOperation(operation){
-    if (lastButtonPressed == 'o'){
+    if (lastButtonPressed == 'o' && deletePressed == false){
+        return;
+    }
+    else if (lastButtonPressed == 'o' && deletePressed == true){
+        displaynumber.textContent += operation;
+        currentOperation = operation;
+        lastButtonPressed = 'o';
         return;
     }
     if (firstNumber == null){
-        firstNumber = displaynumber.textContent;
+        firstNumber = parseFloat(displaynumber.textContent);
         displaynumber.textContent = operation;
         currentOperation = operation;
     }
@@ -64,46 +71,42 @@ function proceedOperation(operation){
     }
     else if (firstNumber !== null && secondNumber == null && displaynumber.textContent !== '*' && displaynumber.textContent !== '/' && displaynumber.textContent != '-' && displaynumber.textContent != '+'){
         equationOne = true;
+        tempSecondNumber = parseFloat(displaynumber.textContent);
         if (currentOperation == '+'){
-            tempSecondNumber = displaynumber.textContent;
-            if ((displayFullEquation('add',tempSecondNumber)).length > 17){
+            if ((displayFullEquation('add',firstNumber, tempSecondNumber)).length > 13){
                 displaynumber.textContent = operate(add, firstNumber, tempSecondNumber).toString();
             } else {
-                displaynumber.textContent = displayFullEquation('add',tempSecondNumber);
+                displaynumber.textContent = displayFullEquation('add', firstNumber, tempSecondNumber);
             }
             firstNumber = operate(add, firstNumber, tempSecondNumber);
         }
         else if (currentOperation == '-'){ 
-            tempSecondNumber = displaynumber.textContent;
-            if ((displayFullEquation('subtract',tempSecondNumber)).length > 17){
+            if ((displayFullEquation('subtract',firstNumber, tempSecondNumber)).length > 13){
                 displaynumber.textContent = operate(subtract, firstNumber, tempSecondNumber).toString();
             } else {
-                displaynumber.textContent = displayFullEquation('subtract',tempSecondNumber);
+                displaynumber.textContent = displayFullEquation('subtract',firstNumber,tempSecondNumber);
             }
             firstNumber= operate(subtract, firstNumber, tempSecondNumber);
         }
         else if (currentOperation == '*'){
-            tempSecondNumber = displaynumber.textContent;
-            if ((displayFullEquation('multiply',tempSecondNumber)).length > 17){
+            if ((displayFullEquation('multiply',firstNumber, tempSecondNumber)).length > 13){
                 displaynumber.textContent = operate(multiply, firstNumber, tempSecondNumber).toString();
             } else {
-                displaynumber.textContent = displayFullEquation('multiply',tempSecondNumber);
+                displaynumber.textContent = displayFullEquation('multiply',firstNumber,tempSecondNumber);
             }
             firstNumber = operate(multiply, firstNumber, tempSecondNumber);
         }
         else if (currentOperation == '/'){
-            tempSecondNumber = displaynumber.textContent;
-            if ((displayFullEquation('divide',tempSecondNumber)).length > 17){
+            if ((displayFullEquation('divide',firstNumber, tempSecondNumber)).length > 13){
                 displaynumber.textContent = operate(divide, firstNumber, tempSecondNumber).toString();
             } else {
-                displaynumber.textContent = displayFullEquation('divide',tempSecondNumber);
+                displaynumber.textContent = displayFullEquation('divide',firstNumber,tempSecondNumber);
             }
             firstNumber = operate(divide, firstNumber, tempSecondNumber);
         }
         displaynumber.textContent += operation;
         currentOperation = operation;
     }
-
     else {
         displaynumber.textContent = operation;
         currentOperation = operation;
@@ -132,11 +135,15 @@ function displayNumber(number){
 }
 
 function deleteNumber(number){
-    if (equalSignOne == true){
-        clearDisplay();
-        equalSignOne = false;
+    // if (equalSignOne == true){
+    //     clearDisplay();
+    //     equalSignOne = false;
+    // }
+    if (displaynumber.textContent !== null && (displaynumber.textContent).length > 1 && lastButtonPressed == 'o'){
+        displaynumber.textContent = displaynumber.textContent.toString().slice(0, -1);
+        deletePressed = true;
     }
-    if (displaynumber.textContent !== null && (displaynumber.textContent).length > 1){
+    else if (displaynumber.textContent !== null && (displaynumber.textContent).length > 1 && lastButtonPressed !== 'o'){
         displaynumber.textContent = displaynumber.textContent.toString().slice(0, -1);
     }
     else {
@@ -151,6 +158,7 @@ function clearDisplay(){
     secondNumber = null;
     equalSignOne = false;
     equationOne = false;
+    lastButtonPressed = null;
 }
 
 function changeSign(){
@@ -170,44 +178,44 @@ function equalButtonFunc(){
         return;
     }
     if (firstNumber !== null && currentOperation !== null && secondNumber == null){
-         secondNumber = displaynumber.textContent;
+         secondNumber = parseFloat(displaynumber.textContent);
      }
     if (firstNumber !== null && currentOperation !== null && secondNumber !== null){
         equalSignOne = true;
         firstNumber = parseFloat(firstNumber);
         secondNumber = parseFloat(secondNumber);
         if (currentOperation == '+'){
-            if ((displayFullEquation('add',secondNumber)).length > 13){
+            if ((displayFullEquation('add',firstNumber,secondNumber)).length > 13){
                 displaynumber.textContent = operate(add, firstNumber, secondNumber).toString();
             } else {
-                displaynumber.textContent = displayFullEquation('add',secondNumber);
+                displaynumber.textContent = displayFullEquation('add',firstNumber, secondNumber);
             }
             firstNumber = operate(add, firstNumber, secondNumber);
             secondNumber = null;
         }
         else if (currentOperation == '-'){
-            if ((displayFullEquation('subtract', secondNumber)).length > 13){
+            if ((displayFullEquation('subtract', firstNumber,secondNumber)).length > 13){
                 displaynumber.textContent = operate(subtract, firstNumber, secondNumber).toString();
             } else {
-                displaynumber.textContent = displayFullEquation('subtract',secondNumber);
+                displaynumber.textContent = displayFullEquation('subtract',firstNumber, secondNumber);
             }
             firstNumber = operate(subtract, firstNumber, secondNumber);
             secondNumber = null;
         }
         else if (currentOperation == '*'){
-            if ((displayFullEquation('multiply',secondNumber)).length > 13){
+            if ((displayFullEquation('multiply',firstNumber,secondNumber)).length > 13){
                 displaynumber.textContent = operate(multiply, firstNumber, secondNumber).toString();
             } else {
-                displaynumber.textContent = displayFullEquation('multiply',secondNumber);
+                displaynumber.textContent = displayFullEquation('multiply', firstNumber, secondNumber);
             }
             firstNumber = operate(multiply, firstNumber, secondNumber);
             secondNumber = null;
         }
         else if (currentOperation == '/'){
-            if ((displayFullEquation('divide',secondNumber)).length > 13){
+            if ((displayFullEquation('divide',firstNumber,secondNumber)).length > 13){
                 displaynumber.textContent = operate(divide, firstNumber, secondNumber).toString();
             } else {
-                displaynumber.textContent = displayFullEquation('divide',secondNumber);
+                displaynumber.textContent = displayFullEquation('divide',firstNumber, secondNumber);
             }
             firstNumber = operate(divide, firstNumber, secondNumber);
             secondNumber = null;
@@ -218,7 +226,7 @@ function equalButtonFunc(){
     }
 }
 
-function displayFullEquation(operation, secondNumber){
+function displayFullEquation(operation, firstNumber, secondNumber){
     if (operation == 'add'){
         return parseFloat(firstNumber.toFixed(2)).toString() + currentOperation.toString() + parseFloat(secondNumber.toFixed(2)).toString() + "=" + operate(add, firstNumber, secondNumber).toString();
     }
