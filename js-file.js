@@ -66,22 +66,38 @@ function proceedOperation(operation){
         equationOne = true;
         if (currentOperation == '+'){
             tempSecondNumber = displaynumber.textContent;
-            displaynumber.textContent = displayFullEquation('add',tempSecondNumber);;
+            if ((displayFullEquation('add',tempSecondNumber)).length > 17){
+                displaynumber.textContent = operate(add, firstNumber, tempSecondNumber).toString();
+            } else {
+                displaynumber.textContent = displayFullEquation('add',tempSecondNumber);
+            }
             firstNumber = operate(add, firstNumber, tempSecondNumber);
         }
         else if (currentOperation == '-'){ 
             tempSecondNumber = displaynumber.textContent;
-            displaynumber.textContent = displayFullEquation('subtract',tempSecondNumber);
+            if ((displayFullEquation('subtract',tempSecondNumber)).length > 17){
+                displaynumber.textContent = operate(subtract, firstNumber, tempSecondNumber).toString();
+            } else {
+                displaynumber.textContent = displayFullEquation('subtract',tempSecondNumber);
+            }
             firstNumber= operate(subtract, firstNumber, tempSecondNumber);
         }
         else if (currentOperation == '*'){
             tempSecondNumber = displaynumber.textContent;
-            displaynumber.textContent = displayFullEquation('multiply',tempSecondNumber);
+            if ((displayFullEquation('multiply',tempSecondNumber)).length > 17){
+                displaynumber.textContent = operate(multiply, firstNumber, tempSecondNumber).toString();
+            } else {
+                displaynumber.textContent = displayFullEquation('multiply',tempSecondNumber);
+            }
             firstNumber = operate(multiply, firstNumber, tempSecondNumber);
         }
         else if (currentOperation == '/'){
             tempSecondNumber = displaynumber.textContent;
-            displaynumber.textContent = displayFullEquation('divide',tempSecondNumber);
+            if ((displayFullEquation('divide',tempSecondNumber)).length > 17){
+                displaynumber.textContent = operate(divide, firstNumber, tempSecondNumber).toString();
+            } else {
+                displaynumber.textContent = displayFullEquation('divide',tempSecondNumber);
+            }
             firstNumber = operate(divide, firstNumber, tempSecondNumber);
         }
         displaynumber.textContent += operation;
@@ -158,22 +174,38 @@ function equalButtonFunc(){
         firstNumber = parseFloat(firstNumber);
         secondNumber = parseFloat(secondNumber);
         if (currentOperation == '+'){
-            displaynumber.textContent = displayFullEquation('add',secondNumber);
+            if ((displayFullEquation('add',secondNumber)).length > 17){
+                displaynumber.textContent = operate(add, firstNumber, secondNumber).toString();
+            } else {
+                displaynumber.textContent = displayFullEquation('add',secondNumber);
+            }
             firstNumber = operate(add, firstNumber, secondNumber);
             secondNumber = null;
         }
         else if (currentOperation == '-'){
-            displaynumber.textContent = displayFullEquation('subtract',secondNumber);
+            if ((displayFullEquation('subtract', secondNumber)).length > 17){
+                displaynumber.textContent = operate(subtract, firstNumber, secondNumber).toString();
+            } else {
+                displaynumber.textContent = displayFullEquation('subtract',secondNumber);
+            }
             firstNumber = operate(subtract, firstNumber, secondNumber);
             secondNumber = null;
         }
         else if (currentOperation == '*'){
-            displaynumber.textContent = displayFullEquation('multiply',secondNumber);
+            if ((displayFullEquation('multiply',secondNumber)).length > 17){
+                displaynumber.textContent = operate(multiply, firstNumber, secondNumber).toString();
+            } else {
+                displaynumber.textContent = displayFullEquation('multiply',secondNumber);
+            }
             firstNumber = operate(multiply, firstNumber, secondNumber);
             secondNumber = null;
         }
         else if (currentOperation == '/'){
-            displaynumber.textContent = displayFullEquation('divide',secondNumber);
+            if ((displayFullEquation('divide',secondNumber)).length > 17){
+                displaynumber.textContent = operate(divide, firstNumber, secondNumber).toString();
+            } else {
+                displaynumber.textContent = displayFullEquation('divide',secondNumber);
+            }
             firstNumber = operate(divide, firstNumber, secondNumber);
             secondNumber = null;
         }
@@ -185,16 +217,16 @@ function equalButtonFunc(){
 
 function displayFullEquation(operation, secondNumber){
     if (operation == 'add'){
-        return parseFloat(firstNumber.toFixed(2).toString()) + currentOperation.toString() + parseFloat(secondNumber.toFixed(2).toString()) + "=" + operate(add, firstNumber, secondNumber).toString();
+        return parseFloat(firstNumber.toFixed(2)).toString() + currentOperation.toString() + parseFloat(secondNumber.toFixed(2)).toString() + "=" + operate(add, firstNumber, secondNumber).toString();
     }
     if (operation == 'subtract'){
-        return parseFloat(firstNumber.toFixed(2).toString()) + currentOperation.toString() + parseFloat(secondNumber.toFixed(2).toString()) + "=" + operate(subtract, firstNumber, secondNumber).toString();
+        return parseFloat(firstNumber.toFixed(2)).toString() + currentOperation.toString() + parseFloat(secondNumber.toFixed(2)).toString() + "=" + operate(subtract, firstNumber, secondNumber).toString();
     }
     if (operation == 'multiply'){
-        return parseFloat(firstNumber.toFixed(2).toString()) + currentOperation.toString() + parseFloat(secondNumber.toFixed(2).toString()) + "=" + operate(multiply, firstNumber, secondNumber).toString();
+        return parseFloat(firstNumber.toFixed(2)).toString() + currentOperation.toString() + parseFloat(secondNumber.toFixed(2)).toString() + "=" + operate(multiply, firstNumber, secondNumber).toString();
     }
     if (operation == 'divide'){
-        return parseFloat(firstNumber.toFixed(2).toString()) + currentOperation.toString() + parseFloat(secondNumber.toFixed(2).toString()) + "=" + operate(divide, firstNumber, secondNumber).toString();
+        return parseFloat(firstNumber.toFixed(2)).toString() + currentOperation.toString() + parseFloat(secondNumber.toFixed(2)).toString() + "=" + operate(divide, firstNumber, secondNumber).toString();
     }
 }
 
@@ -218,4 +250,3 @@ function keyboardInput(e){
         proceedOperation(e.key);
     }
 }
-
