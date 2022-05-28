@@ -177,7 +177,7 @@ function equalButtonFunc(){
         firstNumber = parseFloat(firstNumber);
         secondNumber = parseFloat(secondNumber);
         if (currentOperation == '+'){
-            if ((displayFullEquation('add',secondNumber)).length > 17){
+            if ((displayFullEquation('add',secondNumber)).length > 13){
                 displaynumber.textContent = operate(add, firstNumber, secondNumber).toString();
             } else {
                 displaynumber.textContent = displayFullEquation('add',secondNumber);
@@ -186,7 +186,7 @@ function equalButtonFunc(){
             secondNumber = null;
         }
         else if (currentOperation == '-'){
-            if ((displayFullEquation('subtract', secondNumber)).length > 17){
+            if ((displayFullEquation('subtract', secondNumber)).length > 13){
                 displaynumber.textContent = operate(subtract, firstNumber, secondNumber).toString();
             } else {
                 displaynumber.textContent = displayFullEquation('subtract',secondNumber);
@@ -195,7 +195,7 @@ function equalButtonFunc(){
             secondNumber = null;
         }
         else if (currentOperation == '*'){
-            if ((displayFullEquation('multiply',secondNumber)).length > 17){
+            if ((displayFullEquation('multiply',secondNumber)).length > 13){
                 displaynumber.textContent = operate(multiply, firstNumber, secondNumber).toString();
             } else {
                 displaynumber.textContent = displayFullEquation('multiply',secondNumber);
@@ -204,7 +204,7 @@ function equalButtonFunc(){
             secondNumber = null;
         }
         else if (currentOperation == '/'){
-            if ((displayFullEquation('divide',secondNumber)).length > 17){
+            if ((displayFullEquation('divide',secondNumber)).length > 13){
                 displaynumber.textContent = operate(divide, firstNumber, secondNumber).toString();
             } else {
                 displaynumber.textContent = displayFullEquation('divide',secondNumber);

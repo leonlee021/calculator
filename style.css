@@ -1,57 +1,95 @@
 body{
     position: relative;
-    background-color: rgb(199, 237, 243);
+    background-color: rgb(228, 228, 228);;
 }
 
 #calculator{
     display: flex;
     flex-direction: column;
-    width: 500px;
+    width: 400px;
     height: 600px;
-    background-color: rgb(88, 232, 116);
-    border: 5px solid rgb(0, 0, 0);
+    background-color: rgb(138, 138, 138);
+    border: 3px solid rgb(0, 0, 0);
     margin: 0 auto;
     margin-top: 40px;
     border-radius: 10% !important;
     overflow: hidden;
+    box-shadow: 0px 2px 2px rgb(95, 95, 95);
+    /* align-items: space-evenly; */
 } 
 
 #display{
-    background-color: rgb(252, 235, 194); 
+    background-color: rgb(253, 253, 253); 
     padding: 30px; 
     max-height: 150px;
     min-height: 80px;
-    border: 5px solid rgb(0, 0, 0);
+    border: 3px solid rgb(0, 0, 0);
     margin: 30px;
-    border-radius: 20%;
+    /* border-radius: 20%; */
     text-align:right;
     font-family: Monaco;
-    font-size: 1cm;
+    font-size: 0.9cm;
 }
 
 #middlebar{
     display: flex;
-    justify-content: space-evenly;
-    background-color: rgb(88, 232, 116);
-    font-size: 0.7cm;
-    gap: 40px;
+    background-color: rgb(138, 138, 138);
+    font-size: 0.6cm;
+    gap: 10px;
+    margin: 0px 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 } 
 
 .middlebar{
-    border: 5px solid rgb(0, 0, 0);
-    padding: 15px;
+    /* border: 3.5px solid rgb(0, 0, 0); */
+    padding: 10px 25px;
     border-radius: 50%;
-    background-color: rgb(252, 235, 194);
     font-family: Monaco;
     cursor: pointer;
+    box-shadow: 4px 4px 4px rgb(77, 77, 77);
+    margin-top: -12px;
+    font-size: 18pt;
+    width: 80px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
-.middlebar:hover{
-    background-color: rgb(255, 129, 84);
+#clear{
+    border-radius: 0%;
+    background-color: rgb(255, 154, 154);
+}
+
+#delete{
+    border-radius: 0%;
+    padding: auto;
+    background-color: rgb(159, 159, 240);
+    text-align: center;
+}
+
+#negative{
+    padding: 15px 0px;
+    box-shadow: 4px 4px 4px rgb(77, 77, 77);
+    border-radius: 50%;
+    text-align: center;
+    background-color: rgb(242, 242, 242);
+    font-family: Monaco;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+#clear:hover{
+    background-color: rgb(225, 134, 134);
+}
+
+#delete:hover{
+    background-color: rgb(141, 141, 213);
 }
 
 #negative:hover{
-    background-color: rgb(230, 188, 92);
+    background-color: rgb(206, 206, 206);
 }
 
 #keys{
@@ -68,39 +106,42 @@ body{
 }
 
 .numbers{
-    border: 5px solid rgb(0, 0, 0);
-    padding: 5px 40px;
+    /* border: 1px solid rgb(0, 0, 0);  */
+    padding: 15px 25px;
+    box-shadow: 4px 4px 4px rgb(77, 77, 77);
     border-radius: 50%;
     text-align: center;
-    background-color: rgb(252, 235, 194);
+    background-color: rgb(242, 242, 242);
     font-family: Monaco;
     cursor: pointer;
 }
 
 .numbers:hover{
-    background-color: rgb(230, 188, 92);
+    background-color: rgb(206, 206, 206);
 }
 
 .operators{
-    border: 5px solid rgb(0, 0, 0);
-    padding: 5px 40px;
+    /* border: 1px solid rgb(0, 0, 0);  */
+    padding: 15px 25px;
+    box-shadow: 4px 4px 4px rgb(77, 77, 77);
     border-radius: 50%;
     text-align: center;
-    background-color: rgb(252, 235, 194);
+    background-color: rgb(242, 242, 242);
     font-family: Monaco;
     cursor: pointer;
 }
 
 .operators:hover{
-    background-color: rgb(230, 188, 92);
+    background-color: rgb(206, 206, 206);
 }
 
 #equalbutton{
-    border: 5px solid rgb(0, 0, 0);
-    padding: 5px 40px;
+    /* border: 1px solid rgb(0, 0, 0);  */
+    padding: 15px 25px;
+    box-shadow: 4px 4px 4px rgb(77, 77, 77);
     border-radius: 50%;
     text-align: center;
-    background-color: rgb(252, 235, 194);
+    background-color: rgb(242, 242, 242);
     font-family: Monaco;
     cursor: pointer;
 }
@@ -114,12 +155,12 @@ h1{
     font-family: Monaco;
     margin-top: 30px;
     font-size: 25pt;
-    text-shadow: 0px 5px rgb(88, 232, 116);
 }
 
 h6{
     text-align: center;
     font-size: 10pt;
     margin-top: 20px;
+    font-family: Monaco;
     /* margin-bottom: 40px; */
 }
